@@ -5,6 +5,7 @@ import { getLikes } from "../../api/api"
 import { CommentSection } from "../../pages/CommentSection"
 import { BsChat } from "react-icons/bs"
 import { BsHeart } from "react-icons/bs"
+import LikeButton from "../LikeButton"
 
 const MusicPost = ({
   spotifyCover,
@@ -75,17 +76,30 @@ const MusicPost = ({
           <button
             className="bg-green-600 hover:bg-green-800 rounded p-1 text-white"
             onClick={spotifyLink}
-          ><a href={url}>
-            <div className="flex items-center mx-3 font-galos font-bold">
-              <p className="w-15">Play on</p>
-              
-              <BsSpotify className="text-white text-xl ml-2" />
-              
-            </div>
+          >
+            <a href={url}>
+              <div className="flex items-center mx-3 font-galos font-bold">
+                <p className="w-15">Play on</p>
+
+                <BsSpotify className="text-white text-xl ml-2" />
+              </div>
             </a>
           </button>
         </div>
-        <h1 className="text-gray-200 text-md self-left mx-12 mb-5 font-galos ">{userDescription}</h1>
+        <div className="flex-rows justify-between flex">
+          <div className="w-60">
+            <p className="text-white text-sm self-left justify-start mb-5 ml-12 font-galos">
+              {userDescription}
+            </p>
+          </div>
+          <div className="flex flex-row justify-right">
+            <LikeButton className="text-white w-8 h-8 self-right mr-7" />
+            <BsChat className="text-white w-8 h-8 self-right mr-14" />
+          </div>
+        </div>
+        <h1 className="text-gray-200 text-md self-left mx-12 mb-5 font-galos ">
+          {userDescription}
+        </h1>
         <CommentSection postId={postId} />
       </div>
     </>
